@@ -73,5 +73,3 @@ vim.keymap.set('n', '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', { desc = 'Qu
 vim.keymap.set('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<cr>', { desc = 'Gitsigns toggle deleted' })
 vim.keymap.set('n', '<leader>tw', '<cmd>Gitsigns toggle_word_diff<cr>', { desc = 'Gitsigns toggle word diff' })
 vim.keymap.set('n', '<leader>tt', '<cmd>Gitsigns toggle_linehl<cr><cmd>Gitsigns toggle_numhl<cr><cmd>Gitsigns toggle_signs<cr>', { desc = 'Gitsigns toggle signs' })
-
-vim.keymap.set('i', '<C-S>', 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
