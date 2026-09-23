@@ -1,0 +1,1 @@
+/home/roocce/builds/tree-sitter-grammars/tree-sitter-vue/queries/vue/injections.scm

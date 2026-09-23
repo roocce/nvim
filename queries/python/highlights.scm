@@ -1,0 +1,1 @@
+/home/roocce/builds/tree-sitter-grammars/tree-sitter-python/queries/highlights.scm
