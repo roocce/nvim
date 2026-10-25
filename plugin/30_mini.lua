@@ -1,5 +1,6 @@
 vim.pack.add({
     'https://github.com/nvim-mini/mini.nvim',
+    'https://github.com/rafamadriz/friendly-snippets'
 })
 
 local starter = require('mini.starter')
@@ -62,21 +63,17 @@ vim.cmd('highlight! link MiniPickMatchCurrent StatusLine')
 require('mini.pairs').setup()
 require('mini.surround').setup()
 
--- later(function()
---     add({ source = 'rafamadriz/friendly-snippets' })
---     local gen_loader = require('mini.snippets').gen_loader
---
---     local htmldjango_patterns = {'frameworks/djangohtml.json', 'html.json'}
---     local lang_patterns = {
--- 	htmldjango = htmldjango_patterns
---     }
---     require('mini.snippets').setup({
--- 	snippets = {
--- 	    gen_loader.from_lang({ lang_patterns = lang_patterns })
--- 	}
---     })
--- end)
---
+local gen_loader = require('mini.snippets').gen_loader
+local htmldjango_patterns = {'frameworks/djangohtml.json', 'html.json'}
+local lang_patterns = {
+    htmldjango = htmldjango_patterns
+}
+require('mini.snippets').setup({
+    snippets = {
+	gen_loader.from_lang({ lang_patterns = lang_patterns })
+    }
+})
+
 -- later(function() require('mini.completion').setup() end)
 -- later(function() require('mini.bufremove').setup() end)
 -- later(function() require('mini.files').setup() end)
