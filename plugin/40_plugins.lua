@@ -84,41 +84,39 @@ vim.lsp.config('ruff', {
     }
 })
 
--- now(function()
--- 	-- add({
--- 	--     source = 'nvim-treesitter/nvim-treesitter',
--- 	--     -- Use 'master' while monitoring updates in 'main'
--- 	--     checkout = 'master',
--- 	--     monitor = 'main',
--- 	--     -- Perform action after every checkout
--- 	--     hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
--- 	-- })
--- 	-- Possible to immediately execute code which depends on the added plugin
--- 	-- require('nvim-treesitter.configs').setup({
--- 	--     ensure_installed = {
--- 	-- 'css',
--- 	-- 'diff',
--- 	-- 'html',
--- 	-- 'javascript',
--- 	-- 'jsdoc',
--- 	-- 'json',
--- 	-- 'luadoc',
--- 	-- 'printf',
--- 	-- 'regex',
--- 	-- 'sql',
--- 	-- 'toml',
--- 	-- 'xml',
--- 	-- 'yaml',
--- 	--     },
--- 	--     highlight = { enable = true },
--- 	--     indent = { enable = true },
--- 	-- })
---
--- 	vim.treesitter.language.register('bash', { 'sh' })
--- 	vim.treesitter.language.register('php', { 'php' })
--- 	vim.treesitter.language.register('python', { 'py' })
--- 	vim.treesitter.language.register('vue', { 'vue' })
--- end)
+	-- add({
+	--     source = 'nvim-treesitter/nvim-treesitter',
+	--     -- Use 'master' while monitoring updates in 'main'
+	--     checkout = 'master',
+	--     monitor = 'main',
+	--     -- Perform action after every checkout
+	--     hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
+	-- })
+	-- Possible to immediately execute code which depends on the added plugin
+	-- require('nvim-treesitter.configs').setup({
+	--     ensure_installed = {
+	-- 'css',
+	-- 'diff',
+	-- 'html',
+	-- 'javascript',
+	-- 'jsdoc',
+	-- 'json',
+	-- 'luadoc',
+	-- 'printf',
+	-- 'regex',
+	-- 'sql',
+	-- 'toml',
+	-- 'xml',
+	-- 'yaml',
+	--     },
+	--     highlight = { enable = true },
+	--     indent = { enable = true },
+	-- })
+
+vim.treesitter.language.register('bash', { 'sh' })
+vim.treesitter.language.register('php', { 'php' })
+vim.treesitter.language.register('python', { 'py' })
+vim.treesitter.language.register('vue', { 'vue' })
 
 -- now(function()
 -- 	add({ source = 'mfussenegger/nvim-dap' })
