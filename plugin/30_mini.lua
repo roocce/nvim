@@ -10,9 +10,10 @@ starter.setup({
     }
 })
 
--- now(function() require('mini.notify').setup() end)
--- now(function() require('mini.icons').setup() end)
--- now(function() require('mini.tabline').setup() end)
+require('mini.notify').setup()
+require('mini.icons').setup()
+require('mini.tabline').setup()
+
 -- now(function ()
 -- 	local MiniStatusline = require('mini.statusline')
 --
