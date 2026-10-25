@@ -38,6 +38,7 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Move focus to the lower window'
 vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Move focus to the upper window' })
 
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP go to definition'})
+vim.keymap.set('n', '<F3>', vim.lsp.buf.format, { desc = 'LSP format'})
 -- Use CTRL-space to trigger LSP completion.
 -- Use CTRL-Y to select an item. |complete_CTRL-Y|
 -- vim.keymap.set('i', '<S-Tab>', function()
