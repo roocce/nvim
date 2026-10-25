@@ -46,7 +46,7 @@ vim.keymap.set('n', '<F3>', vim.lsp.buf.format, { desc = 'LSP format'})
 -- end)
 --
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Netrw Directory Listing'})
-vim.keymap.set('n', '<leader>pp', function() require('mini.files').open() end, { desc = 'Open file browser'})
+vim.keymap.set('n', '<leader>pe', function() require('mini.files').open() end, { desc = 'Open file browser'})
 vim.keymap.set('n', '<leader>pf', '<cmd>Pick files<cr>', { desc = 'Pick files'})
 vim.keymap.set('n', '<leader>pg', '<cmd>Pick grep_live<cr>', { desc = 'Pick grep_live'})
 vim.keymap.set('n', '<leader>pb', '<cmd>Pick buffers<cr>', { desc = 'Pick buffers'})
