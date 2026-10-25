@@ -59,9 +59,9 @@ require('mini.pick').setup({
 })
 vim.cmd('highlight! link MiniPickMatchCurrent StatusLine')
 
--- later(function() require('mini.pairs').setup() end)
--- later(function() require('mini.surround').setup() end)
---
+require('mini.pairs').setup()
+require('mini.surround').setup()
+
 -- later(function()
 --     add({ source = 'rafamadriz/friendly-snippets' })
 --     local gen_loader = require('mini.snippets').gen_loader
