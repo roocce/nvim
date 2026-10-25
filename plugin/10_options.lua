@@ -5,6 +5,10 @@ vim.g.netrw_alto = 0
 vim.g.netrw_liststyle = 3
 vim.g.netrw_winsize = 30
 
+vim.g.clipboard = 'xclip'
+vim.o.mousemoveevent = true
+vim.o.mouse = 'a'
+
 vim.opt.scrolloff = 999
 vim.opt.wrap = false
 vim.opt.termguicolors = true
@@ -12,10 +16,10 @@ vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4
+vim.opt.tabstop = 8
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -40,7 +44,7 @@ vim.opt.inccommand = 'split'
 
 vim.opt.signcolumn = 'yes'
 vim.opt.cursorline = true
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "75,80"
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
