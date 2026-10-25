@@ -11,6 +11,14 @@
     "nvim-solarized-lua": {
       "rev": "d69a263c97cbc765ca442d682b3283aefd61d4ac",
       "src": "https://github.com/ishan9299/nvim-solarized-lua"
+    },
+    "ripgrep": {
+      "rev": "6892bc2b7efe5909cbbeec8f757ed2c4c76b1d30",
+      "src": "https://github.com/BurntSushi/ripgrep"
+    },
+    "vim-vinegar": {
+      "rev": "bb1bcddf43cfebe05eb565a84ab069b357d0b3d6",
+      "src": "https://github.com/tpope/vim-vinegar"
     }
   }
 }

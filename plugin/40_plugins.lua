@@ -1,9 +1,9 @@
 vim.pack.add({
-    'https://github.com/ishan9299/nvim-solarized-lua'
+    'https://github.com/ishan9299/nvim-solarized-lua',
+    'https://github.com/tpope/vim-vinegar',
+    'https://github.com/BurntSushi/ripgrep'
 })
 vim.cmd('colorscheme solarized')
--- now(function() add({ source = 'tpope/vim-vinegar' }) end)
--- now(function() add({ source = 'BurntSushi/ripgrep' }) end)
 
 -- now(function()
 --     add({ source = 'williamboman/mason.nvim' })
