@@ -77,8 +77,19 @@ vim.keymap.set('n', '<C-p>', function() require('hover').hover_switch('previous'
 vim.keymap.set('n', '<C-n>', function() require('hover').hover_switch('next') end, {desc = 'hover.nvim (next source)'})
 
 -- Mouse support
-vim.keymap.set('n', '<MouseMove>', function() require('hover').hover_mouse() end, { desc = 'hover.nvim (mouse)' })
-vim.o.mousemoveevent = true
+vim.keymap.set('n', '<MouseMove>',
+function()
+    vim.o.scrolloff = 0
+    require('hover').hover_mouse()
+end, { desc = 'hover.nvim (mouse)' })
+vim.api.nvim_create_autocmd("CursorMoved", {
+    callback = function()
+	local mode = vim.api.nvim_get_mode()
+	if mode.mode == 'n' then
+	    vim.o.scrolloff = 999
+	end
+    end
+})
 
 vim.keymap.set('n', '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'Diagnostics (Trouble)' })
 vim.keymap.set('n', '<leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { desc = 'Buffer Diagnostics (Trouble)' })
