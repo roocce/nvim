@@ -74,11 +74,10 @@ require('mini.snippets').setup({
     }
 })
 
--- later(function() require('mini.completion').setup() end)
--- later(function() require('mini.bufremove').setup() end)
--- later(function() require('mini.files').setup() end)
--- later(function() require('mini.move').setup() end)
---
+require('mini.completion').setup()
+require('mini.bufremove').setup()
+require('mini.files').setup()
+require('mini.move').setup()
 
 -- later(function ()
 -- 	local miniclue = require('mini.clue')
