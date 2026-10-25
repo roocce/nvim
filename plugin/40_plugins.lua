@@ -2,7 +2,8 @@ vim.pack.add({
     'https://github.com/ishan9299/nvim-solarized-lua',
     'https://github.com/tpope/vim-vinegar',
     'https://github.com/BurntSushi/ripgrep',
-    'https://github.com/williamboman/mason.nvim'
+    'https://github.com/williamboman/mason.nvim',
+    'https://github.com/neovim/nvim-lspconfig'
 })
 vim.cmd('colorscheme solarized')
 
@@ -17,78 +18,71 @@ require('mason').setup({
     }
 })
 
--- now(function()
---     add({
---         source = 'neovim/nvim-lspconfig',
---         -- Supply dependencies near target plugin
---         depends = { 'williamboman/mason.nvim' },
---     })
---
---     local vue_language_server_path = vim.fn.expand '$MASON/packages' .. '/vue-language-server' .. '/node_modules/@vue/language-server'
---     local vue_plugin = {
---         name = '@vue/typescript-plugin',
---         location = vue_language_server_path,
---         languages = { 'vue' },
---         configNamespace = 'typescript',
---     }
---     local ts_ls_config = {
---       init_options = {
---         plugins = {
---           vue_plugin,
---         },
---       },
---       filetypes = { 'typescript', 'javascript', 'vue' },
---     }
---
---     vim.lsp.config('ts_ls', ts_ls_config)
---     vim.lsp.config('vue_ls', {})
---
--- 	--    vim.lsp.config('ts_ls', {
--- 	-- filetypes = {'javascript', 'typescript', 'vue'}
--- 	--    })
---
---     -- vim.lsp.enable({
---         -- 'cssls',
---         -- 'html',
---         -- 'jsonls',
---     -- })
---
---     vim.api.nvim_create_autocmd("LspAttach", {
--- 	group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
--- 	callback = function(args)
--- 	    local client = vim.lsp.get_client_by_id(args.data.client_id)
--- 		if client == nil then
--- 		    return
--- 		end
--- 		if client.name == 'ruff' then
--- 		    -- Disable hover in favor of Pyright
--- 		    client.server_capabilities.hoverProvider = false
--- 		end
--- 	    end,
--- 	    desc = 'LSP: Disable hover capability from Ruff',
---     })
---     vim.lsp.config('pyright', {
--- 	settings = {
--- 	    pyright = {
--- 		-- Using Ruff's import organizer
--- 		disableOrganizeImports = true,
--- 	    },
--- 	    python = {
--- 		analysis = {
--- 		    -- Ignore all files for analysis to exclusively use Ruff for linting
--- 		    ignore = { '*' }
--- 		},
--- 	    },
--- 	},
---     })
---     vim.lsp.config('ruff', {
--- 	init_options = {
--- 	    settings = {
--- 		logLevel = 'debug'
--- 	    }
--- 	}
---     })
--- end)
+
+local vue_language_server_path = vim.fn.expand '$MASON/packages' .. '/vue-language-server' .. '/node_modules/@vue/language-server'
+local vue_plugin = {
+    name = '@vue/typescript-plugin',
+    location = vue_language_server_path,
+    languages = { 'vue' },
+    configNamespace = 'typescript',
+}
+local ts_ls_config = {
+  init_options = {
+    plugins = {
+      vue_plugin,
+    },
+  },
+  filetypes = { 'typescript', 'javascript', 'vue' },
+}
+
+vim.lsp.config('ts_ls', ts_ls_config)
+vim.lsp.config('vue_ls', {})
+
+    --    vim.lsp.config('ts_ls', {
+    -- filetypes = {'javascript', 'typescript', 'vue'}
+    --    })
+
+-- vim.lsp.enable({
+    -- 'cssls',
+    -- 'html',
+    -- 'jsonls',
+-- })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
+    callback = function(args)
+	local client = vim.lsp.get_client_by_id(args.data.client_id)
+	    if client == nil then
+		return
+	    end
+	    if client.name == 'ruff' then
+		-- Disable hover in favor of Pyright
+		client.server_capabilities.hoverProvider = false
+	    end
+	end,
+	desc = 'LSP: Disable hover capability from Ruff',
+})
+vim.lsp.config('pyright', {
+    settings = {
+	pyright = {
+	    -- Using Ruff's import organizer
+	    disableOrganizeImports = true,
+	},
+	python = {
+	    analysis = {
+		-- Ignore all files for analysis to exclusively use Ruff for linting
+		ignore = { '*' }
+	    },
+	},
+    },
+})
+vim.lsp.config('ruff', {
+    init_options = {
+	settings = {
+	    logLevel = 'debug'
+	}
+    }
+})
 
 -- now(function()
 -- 	-- add({
