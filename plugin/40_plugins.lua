@@ -6,7 +6,8 @@ vim.pack.add({
     'https://github.com/neovim/nvim-lspconfig',
     'https://github.com/mfussenegger/nvim-dap',
     'https://github.com/theHamsta/nvim-dap-virtual-text',
-    'https://github.com/nvim-neotest/nvim-nio'
+    'https://github.com/nvim-neotest/nvim-nio',
+    'https://github.com/rcarriga/nvim-dap-ui'
 })
 vim.cmd('colorscheme solarized')
 
@@ -182,82 +183,73 @@ require('nvim-dap-virtual-text').setup()
 
 -- require('nvim-nio').setup({})
 
--- now(function()
--- 	add({
--- 		source = 'rcarriga/nvim-dap-ui',
--- 		depends = {
--- 			'mfussenegger/nvim-dap',
--- 			'nvim-neotest/nvim-nio'
--- 		}
--- 	})
--- 	require('dapui').setup({
--- 		controls = {
--- 			element = 'watches',
--- 			enabled = true,
--- 			icons = {
--- 				disconnect = '',
--- 				pause = '',
--- 				play = '',
--- 				run_last = '',
--- 				step_back = '',
--- 				step_into = '',
--- 				step_out = '',
--- 				step_over = '',
--- 				terminate = ''
--- 			}
--- 		},
--- 		element_mappings = {},
--- 		expand_lines = true,
--- 		floating = {
--- 			max_height = 480,
--- 			max_width = 640,
--- 			border = 'rounded',
--- 			mappings = {
--- 				close = { 'q', '<Esc>' }
--- 			}
--- 		},
--- 		force_buffers = true,
--- 		icons = {
--- 			collapsed = '',
--- 			current_frame = '',
--- 			expanded = ''
--- 		},
--- 		layouts = {
--- 			{
--- 				elements = {
--- 					{
--- 						id = 'scopes',
--- 						size = 1
--- 					}
--- 				},
--- 				position = 'left',
--- 				size = 80
--- 			},
--- 			{
--- 				elements = {
--- 					{
--- 						id = 'watches',
--- 						size = 1
--- 					}
--- 				},
--- 				position = 'bottom',
--- 				size = 20
--- 			}
--- 		},
--- 		mappings = {
--- 			edit = 'e',
--- 			expand = { '<CR>', '<2-LeftMouse>' },
--- 			open = 'o',
--- 			remove = 'd',
--- 			repl = 'r',
--- 			toggle = 't'
--- 		},
--- 		render = {
--- 			indent = 1,
--- 			max_value_lines = 100
--- 		}
--- 	})
--- end)
+require('dapui').setup({
+	controls = {
+		element = 'watches',
+		enabled = true,
+		icons = {
+			disconnect = '',
+			pause = '',
+			play = '',
+			run_last = '',
+			step_back = '',
+			step_into = '',
+			step_out = '',
+			step_over = '',
+			terminate = ''
+		}
+	},
+	element_mappings = {},
+	expand_lines = true,
+	floating = {
+		max_height = 480,
+		max_width = 640,
+		border = 'rounded',
+		mappings = {
+			close = { 'q', '<Esc>' }
+		}
+	},
+	force_buffers = true,
+	icons = {
+		collapsed = '',
+		current_frame = '',
+		expanded = ''
+	},
+	layouts = {
+		{
+			elements = {
+				{
+					id = 'scopes',
+					size = 1
+				}
+			},
+			position = 'left',
+			size = 80
+		},
+		{
+			elements = {
+				{
+					id = 'watches',
+					size = 1
+				}
+			},
+			position = 'bottom',
+			size = 20
+		}
+	},
+	mappings = {
+		edit = 'e',
+		expand = { '<CR>', '<2-LeftMouse>' },
+		open = 'o',
+		remove = 'd',
+		repl = 'r',
+		toggle = 't'
+	},
+	render = {
+		indent = 1,
+		max_value_lines = 100
+	}
+})
 
 -- now(function()
 -- 	add({ source = 'mfussenegger/nvim-dap-python' })
