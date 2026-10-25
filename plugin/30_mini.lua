@@ -51,9 +51,8 @@ hipatterns.setup({
 	}
 })
 
--- Safely execute later
--- later(function() require('mini.ai').setup() end)
--- later(function() require('mini.comment').setup() end)
+require('mini.ai').setup()
+require('mini.comment').setup()
 -- later(function()
 --     require('mini.pick').setup({
 -- 	mappings = { choose_marked = '<C-q>'}
