@@ -53,12 +53,12 @@ hipatterns.setup({
 
 require('mini.ai').setup()
 require('mini.comment').setup()
--- later(function()
---     require('mini.pick').setup({
--- 	mappings = { choose_marked = '<C-q>'}
---     })
---     vim.cmd('highlight! link MiniPickMatchCurrent StatusLine')
--- end)
+
+require('mini.pick').setup({
+    mappings = { choose_marked = '<C-q>'}
+})
+vim.cmd('highlight! link MiniPickMatchCurrent StatusLine')
+
 -- later(function() require('mini.pairs').setup() end)
 -- later(function() require('mini.surround').setup() end)
 --
