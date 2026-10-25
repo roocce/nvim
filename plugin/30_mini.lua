@@ -2,14 +2,14 @@ vim.pack.add({
     'https://github.com/nvim-mini/mini.nvim',
 })
 
--- now(function()
---     local starter = require('mini.starter')
---     starter.setup({
--- 	items = {
--- 	    starter.sections.recent_files(nil, true, false),
--- 	    starter.sections.builtin_actions()
--- 	}
--- }) end)
+local starter = require('mini.starter')
+starter.setup({
+    items = {
+	starter.sections.recent_files(nil, true, false),
+	starter.sections.builtin_actions()
+    }
+})
+
 -- now(function() require('mini.notify').setup() end)
 -- now(function() require('mini.icons').setup() end)
 -- now(function() require('mini.tabline').setup() end)
