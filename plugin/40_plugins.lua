@@ -4,7 +4,8 @@ vim.pack.add({
     'https://github.com/BurntSushi/ripgrep',
     'https://github.com/williamboman/mason.nvim',
     'https://github.com/neovim/nvim-lspconfig',
-    'https://github.com/mfussenegger/nvim-dap'
+    'https://github.com/mfussenegger/nvim-dap',
+    'https://github.com/theHamsta/nvim-dap-virtual-text'
 })
 vim.cmd('colorscheme solarized')
 
@@ -176,10 +177,7 @@ vim.fn.sign_define(
 	}
 )
 
--- now(function()
--- 	add({ source = 'theHamsta/nvim-dap-virtual-text' })
--- 	require('nvim-dap-virtual-text').setup()
--- end)
+require('nvim-dap-virtual-text').setup()
 
 -- now(function ()
 -- 	add({ source = 'nvim-neotest/nvim-nio' })
