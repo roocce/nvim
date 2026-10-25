@@ -9,7 +9,8 @@ vim.pack.add({
     'https://github.com/nvim-neotest/nvim-nio',
     'https://github.com/rcarriga/nvim-dap-ui',
     'https://github.com/mfussenegger/nvim-dap-python',
-    'https://github.com/lewis6991/hover.nvim'
+    'https://github.com/lewis6991/hover.nvim',
+    'https://github.com/folke/trouble.nvim'
 })
 vim.cmd('colorscheme solarized')
 
@@ -351,10 +352,7 @@ require('hover').setup({
 	mouse_delay = 1000
 })
 
--- now(function()
--- 	add({ source = 'folke/trouble.nvim' })
--- 	require('trouble').setup()
--- end)
+require('trouble').setup()
 
 -- now(function()
 -- 	add({ source = 'lewis6991/gitsigns.nvim' })

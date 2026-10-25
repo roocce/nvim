@@ -48,6 +48,10 @@
       "rev": "6892bc2b7efe5909cbbeec8f757ed2c4c76b1d30",
       "src": "https://github.com/BurntSushi/ripgrep"
     },
+    "trouble.nvim": {
+      "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
+      "src": "https://github.com/folke/trouble.nvim"
+    },
     "vim-vinegar": {
       "rev": "bb1bcddf43cfebe05eb565a84ab069b357d0b3d6",
       "src": "https://github.com/tpope/vim-vinegar"
