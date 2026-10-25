@@ -1,23 +1,21 @@
 vim.pack.add({
     'https://github.com/ishan9299/nvim-solarized-lua',
     'https://github.com/tpope/vim-vinegar',
-    'https://github.com/BurntSushi/ripgrep'
+    'https://github.com/BurntSushi/ripgrep',
+    'https://github.com/williamboman/mason.nvim'
 })
 vim.cmd('colorscheme solarized')
 
--- now(function()
---     add({ source = 'williamboman/mason.nvim' })
---     require('mason').setup({
---         ui = {
---             border = 'rounded',
---             icons = {
---                 package_installed = '✓',
---                 package_pending = '➜',
---                 package_uninstalled = '✗'
---             }
---         }
---     })
--- end)
+require('mason').setup({
+    ui = {
+	border = 'rounded',
+	icons = {
+	    package_installed = '✓',
+	    package_pending = '➜',
+	    package_uninstalled = '✗'
+	}
+    }
+})
 
 -- now(function()
 --     add({
