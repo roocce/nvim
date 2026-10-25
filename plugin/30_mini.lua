@@ -44,14 +44,12 @@ MiniStatusline.setup({
 	}
 })
 
--- now(function ()
--- 	local hipatterns = require('mini.hipatterns')
--- 	hipatterns.setup({
--- 		highlighters = {
--- 			hex_color = hipatterns.gen_highlighter.hex_color()
--- 		}
--- 	})
--- end)
+local hipatterns = require('mini.hipatterns')
+hipatterns.setup({
+	highlighters = {
+		hex_color = hipatterns.gen_highlighter.hex_color()
+	}
+})
 
 -- Safely execute later
 -- later(function() require('mini.ai').setup() end)
