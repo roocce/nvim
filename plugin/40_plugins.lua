@@ -11,7 +11,8 @@ vim.pack.add({
     'https://github.com/mfussenegger/nvim-dap-python',
     'https://github.com/lewis6991/hover.nvim',
     'https://github.com/folke/trouble.nvim',
-    'https://github.com/lewis6991/gitsigns.nvim'
+    'https://github.com/lewis6991/gitsigns.nvim',
+    'https://github.com/MeanderingProgrammer/render-markdown.nvim'
 })
 vim.cmd('colorscheme solarized')
 
@@ -406,14 +407,11 @@ require('gitsigns').setup({
 	}
 })
 
--- now(function()
---     add('MeanderingProgrammer/render-markdown.nvim')
---     require('render-markdown').setup({
--- 	completions = { lsp = { enabled = true } },
--- 	heading = { border = true },
--- 	indent = { enabled = true },
---     })
--- end)
+require('render-markdown').setup({
+    completions = { lsp = { enabled = true } },
+    heading = { border = true },
+    indent = { enabled = true },
+})
 
 -- now(function ()
 -- 	add({

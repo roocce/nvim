@@ -48,6 +48,10 @@
       "rev": "d69a263c97cbc765ca442d682b3283aefd61d4ac",
       "src": "https://github.com/ishan9299/nvim-solarized-lua"
     },
+    "render-markdown.nvim": {
+      "rev": "8e8795368391036643b622875a6da6a51bcd33f4",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    },
     "ripgrep": {
       "rev": "6892bc2b7efe5909cbbeec8f757ed2c4c76b1d30",
       "src": "https://github.com/BurntSushi/ripgrep"
