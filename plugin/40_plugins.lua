@@ -12,8 +12,10 @@ vim.pack.add({
     'https://github.com/lewis6991/hover.nvim',
     'https://github.com/folke/trouble.nvim',
     'https://github.com/lewis6991/gitsigns.nvim',
-    'https://github.com/MeanderingProgrammer/render-markdown.nvim'
+    'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+    'https://github.com/iamcco/markdown-preview.nvim'
 })
+
 vim.cmd('colorscheme solarized')
 
 require('mason').setup({
@@ -413,39 +415,36 @@ require('render-markdown').setup({
     indent = { enabled = true },
 })
 
--- now(function ()
--- 	add({
--- 		source = 'iamcco/markdown-preview.nvim',
--- 		hooks = {
--- 			post_checkout = function (args)
--- 				local app_dir = args.path
--- 				local env = vim.tbl_extend('force', vim.fn.environ(), {
--- 					NODE_OPTIONS = '--openssl-legacy-provider'
--- 				})
---
--- 				vim.notify('markdown-preview.nvim: building...', vim.log.levels.INFO)
---
--- 				local install = vim.system({ 'npx', '--yes', 'yarn', 'install' }, {
--- 					cwd = app_dir,
--- 					env = env
--- 				}):wait()
--- 				if install.code ~= 0 then
--- 					vim.notify('mkdp yarn install failed:\n' .. (install.stderr or ''), vim.log.levels.ERROR)
--- 					return
--- 				end
---
--- 				local build = vim.system({ 'npx', '--yes', 'yarn', 'build' }, {
--- 					cwd = app_dir,
--- 					env = env
--- 				}):wait()
--- 				if build.code ~= 0 then
--- 					vim.notify('mkdp yarn build failed:\n' .. (build.stderr or ''), vim.log.levels.ERROR)
--- 				else
--- 					vim.notify('markdown-preview.nvim: build complete', vim.log.levels.INFO)
--- 				end
--- 			end
--- 		}
--- 	})
--- end)
+vim.api.nvim_create_autocmd('PackChanged', { callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == 'markdown-preview' and kind == 'update' then
+	if not ev.data.active then vim.cmd.packadd('markdown-preview') end
+	local app_dir = ev.data.path
+	local env = vim.tbl_extend('force', vim.fn.environ(), {
+		NODE_OPTIONS = '--openssl-legacy-provider'
+	})
+
+	vim.notify('markdown-preview.nvim: building...', vim.log.levels.INFO)
+
+	local install = vim.system({ 'npx', '--yes', 'yarn', 'install' }, {
+		cwd = app_dir,
+		env = env
+}):wait()
+	if install.code ~= 0 then
+		vim.notify('mkdp yarn install failed:\n' .. (install.stderr or ''), vim.log.levels.ERROR)
+		return
+	end
+
+	local build = vim.system({ 'npx', '--yes', 'yarn', 'build' }, {
+		cwd = app_dir,
+		env = env
+	}):wait()
+	if build.code ~= 0 then
+		vim.notify('mkdp yarn build failed:\n' .. (build.stderr or ''), vim.log.levels.ERROR)
+	else
+		vim.notify('markdown-preview.nvim: build complete', vim.log.levels.INFO)
+	end
+    end
+end })
 
 -- add({ source = 'mfussenegger/nvim-lint' })
