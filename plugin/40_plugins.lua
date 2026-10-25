@@ -3,7 +3,8 @@ vim.pack.add({
     'https://github.com/tpope/vim-vinegar',
     'https://github.com/BurntSushi/ripgrep',
     'https://github.com/williamboman/mason.nvim',
-    'https://github.com/neovim/nvim-lspconfig'
+    'https://github.com/neovim/nvim-lspconfig',
+    'https://github.com/mfussenegger/nvim-dap'
 })
 vim.cmd('colorscheme solarized')
 
@@ -118,65 +119,62 @@ vim.treesitter.language.register('php', { 'php' })
 vim.treesitter.language.register('python', { 'py' })
 vim.treesitter.language.register('vue', { 'vue' })
 
--- now(function()
--- 	add({ source = 'mfussenegger/nvim-dap' })
--- 	local dap = require('dap')
--- 	dap.adapters.php = {
--- 		type = 'executable',
--- 		command = 'node',
--- 		args = {
--- 			table
--- 				.concat({
--- 					vim.fn.stdpath('data'), 'mason', 'packages', 'php-debug-adapter', 'extension', 'out', 'phpDebug.js'
--- 				}, '/'):gsub('//+', '/')
--- 		}
--- 		-- args = { os.getenv('HOME') .. '/Projects/vscode-php-debug/out/phpDebug.js' },
--- 	}
---
--- 	dap.configurations.php = {
--- 		{
--- 			name = 'Listen for Xdebug',
--- 			type = 'php',
--- 			request = 'launch',
--- 			port = 9003,
--- 			pathMappings = {
--- 				["/app"] = vim.fn.getcwd()
--- 			}
--- 		}
--- 	}
--- 	vim.fn.sign_define('DapBreakpoint', {
--- 		text = '●',
--- 		texthl = '@text.danger',
--- 		linehl = '@text.danger',
--- 		numhl = '@text.danger'
--- 	})
--- 	vim.fn.sign_define(
--- 		'DapBreakpointCondition',
--- 		{ text = '◉', texthl = '@text.warning', linehl = '@text.warning', numhl = '@text.warning' }
--- 	)
--- 	vim.fn.sign_define(
--- 		'DapBreakpointRejected',
--- 		{ text = '◌', texthl = '@text.strike', linehl = '@text.strike', numhl = '@text.strike' }
--- 	)
--- 	vim.fn.sign_define(
--- 		'DapLogPoint',
--- 		{
--- 			text = '◎',
--- 			texthl = '@text.note',
--- 			linehl = '@text.note',
--- 			numhl = '@text.note'
--- 		}
--- 	)
--- 	vim.fn.sign_define(
--- 		'DapStopped',
--- 		{
--- 			text = '►',
--- 			texthl = '@text.title',
--- 			linehl = '@text.title',
--- 			numhl = '@text.title'
--- 		}
--- 	)
--- end)
+local dap = require('dap')
+dap.adapters.php = {
+	type = 'executable',
+	command = 'node',
+	args = {
+		table
+			.concat({
+				vim.fn.stdpath('data'), 'mason', 'packages', 'php-debug-adapter', 'extension', 'out', 'phpDebug.js'
+			}, '/'):gsub('//+', '/')
+	}
+	-- args = { os.getenv('HOME') .. '/Projects/vscode-php-debug/out/phpDebug.js' },
+}
+
+dap.configurations.php = {
+	{
+		name = 'Listen for Xdebug',
+		type = 'php',
+		request = 'launch',
+		port = 9003,
+		pathMappings = {
+			["/app"] = vim.fn.getcwd()
+		}
+	}
+}
+vim.fn.sign_define('DapBreakpoint', {
+	text = '●',
+	texthl = '@text.danger',
+	linehl = '@text.danger',
+	numhl = '@text.danger'
+})
+vim.fn.sign_define(
+	'DapBreakpointCondition',
+	{ text = '◉', texthl = '@text.warning', linehl = '@text.warning', numhl = '@text.warning' }
+)
+vim.fn.sign_define(
+	'DapBreakpointRejected',
+	{ text = '◌', texthl = '@text.strike', linehl = '@text.strike', numhl = '@text.strike' }
+)
+vim.fn.sign_define(
+	'DapLogPoint',
+	{
+		text = '◎',
+		texthl = '@text.note',
+		linehl = '@text.note',
+		numhl = '@text.note'
+	}
+)
+vim.fn.sign_define(
+	'DapStopped',
+	{
+		text = '►',
+		texthl = '@text.title',
+		linehl = '@text.title',
+		numhl = '@text.title'
+	}
+)
 
 -- now(function()
 -- 	add({ source = 'theHamsta/nvim-dap-virtual-text' })
