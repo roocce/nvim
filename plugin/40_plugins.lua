@@ -8,7 +8,8 @@ vim.pack.add({
     'https://github.com/theHamsta/nvim-dap-virtual-text',
     'https://github.com/nvim-neotest/nvim-nio',
     'https://github.com/rcarriga/nvim-dap-ui',
-    'https://github.com/mfussenegger/nvim-dap-python'
+    'https://github.com/mfussenegger/nvim-dap-python',
+    'https://github.com/lewis6991/hover.nvim'
 })
 vim.cmd('colorscheme solarized')
 
@@ -323,35 +324,32 @@ table.insert(dap.configurations.python, {
 	}
 })
 
--- now(function()
--- 	add({ source = 'lewis6991/hover.nvim' })
--- 	require('hover').setup({
--- 		---@type (string | Hover.Config.Provider)[]
--- 		providers = {
--- 			'hover.providers.lsp',
--- 			-- require('hover.providers.gh')
---             -- require('hover.providers.gh_user')
---             -- require('hover.providers.jira')
--- 			'hover.providers.dap',
--- 			'hover.providers.fold_preview',
--- 			'hover.providers.diagnostic'
--- 			-- require('hover.providers.man')
---             -- require('hover.providers.dictionary')
---             -- 'hover.providers.highlight'
--- 		},
--- 		preview_opts = {
--- 			border = 'single'
--- 		},
--- 		-- Whether the contents of a currently open hover window should be moved
---         -- to a :h preview-window when pressing the hover keymap.
--- 		preview_window = false,
--- 		title = true,
--- 		mouse_providers = {
--- 			'hover.providers.lsp'
--- 		},
--- 		mouse_delay = 1000
--- 	})
--- end)
+require('hover').setup({
+	---@type (string | Hover.Config.Provider)[]
+	providers = {
+		'hover.providers.lsp',
+		-- require('hover.providers.gh')
+    -- require('hover.providers.gh_user')
+    -- require('hover.providers.jira')
+		'hover.providers.dap',
+		'hover.providers.fold_preview',
+		'hover.providers.diagnostic'
+		-- require('hover.providers.man')
+    -- require('hover.providers.dictionary')
+    -- 'hover.providers.highlight'
+	},
+	preview_opts = {
+		border = 'single'
+	},
+	-- Whether the contents of a currently open hover window should be moved
+-- to a :h preview-window when pressing the hover keymap.
+	preview_window = false,
+	title = true,
+	mouse_providers = {
+		'hover.providers.lsp'
+	},
+	mouse_delay = 1000
+})
 
 -- now(function()
 -- 	add({ source = 'folke/trouble.nvim' })
