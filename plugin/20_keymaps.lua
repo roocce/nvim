@@ -14,7 +14,23 @@ function toggleBackground()
         vim.o.background = 'light'
     end
 end
-vim.keymap.set('n', '<leader>s', toggleBackground, { desc = 'Toggle background light/dark'})
+function lightBackground()
+    vim.o.background = 'light'
+end
+function darkBackground()
+    vim.o.background = 'dark'
+end
+
+-- vim.api.nvim_create_autocmd("OptionSet", {
+--   pattern = "background",
+--   callback = function()
+--     vim.notify(debug.traceback("background changed to: " .. vim.o.background, 2), vim.log.levels.WARN)
+--   end
+-- })
+
+vim.keymap.set('n', '<leader>ss', toggleBackground, { desc = 'Toggle background light/dark'})
+vim.keymap.set('n', '<leader>sl', lightBackground, { desc = 'Light background' })
+vim.keymap.set('n', '<leader>sd', darkBackground, { desc = 'Dark background' })
 
 vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Move focus to the right window' })
