@@ -58,7 +58,11 @@ require('mini.comment').setup()
 require('mini.pick').setup({
     mappings = { choose_marked = '<C-q>'}
 })
-vim.cmd('highlight! link MiniPickMatchCurrent StatusLine')
+
+local MiniMisc = require('mini.misc')
+MiniMisc.safely('later', function()
+    vim.cmd('highlight! link MiniPickMatchCurrent StatusLine')
+end)
 
 require('mini.pairs').setup()
 require('mini.surround').setup()
